@@ -44,22 +44,6 @@ You can set this in the `.env` file:
 ROOT_PASSWORD=your_secure_password
 ```
 
-In addition to `ROOT_PASSWORD`, the following environment variable can be set:
-
-- `ALLOWED_SSH_IPS`: A comma-separated list of IPs or IP ranges allowed to connect via SSH. Example:
-
-```dotenv
-ALLOWED_SSH_IPS=192.168.1.100,192.168.1.0/24
-```
-
-### **Notes on `ALLOWED_SSH_IPS`**
-
-- If `ALLOWED_SSH_IPS` is not set or is empty, the container will allow SSH connections from all IPs.
-- When running the container locally on Docker Desktop, the container might see a different IP for the host machine due to Docker's internal networking. To troubleshoot:
-  - Check the container's logs for incoming connection attempts.
-  - Use `docker inspect <container_name>` to identify the container's network configuration.
-  - Adjust `ALLOWED_SSH_IPS` accordingly.
-
 ---
 
 ## **Logging**

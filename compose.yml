@@ -7,7 +7,6 @@ services:
     container_name: qnetd
     environment:
       ROOT_PASSWORD: ${ROOT_PASSWORD}
-      ALLOWED_SSH_IPS: ${ALLOWED_SSH_IPS}
     ports:
       - "5403:5403"
       - "22:22"
