@@ -1,0 +1,23 @@
+services:
+  corosync-qnetd:
+    image: corosync-qnetd
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qnetd
+    environment:
+      ROOT_PASSWORD: ${ROOT_PASSWORD}
+      ALLOWED_SSH_IPS: ${ALLOWED_SSH_IPS}
+    ports:
+      - "5403:5403"
+      - "22:22"
+    volumes:
+      - ./qnetd/conf/:/etc/corosync/
+      - ./qnetd/logs/:/var/log/corosync/
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pgrep", "corosync"]
+      interval: 30s
+      timeout: 10s
+      start_period: 30s
+      retries: 3
