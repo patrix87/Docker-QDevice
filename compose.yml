@@ -14,9 +14,3 @@ services:
       - ./qnetd/conf/:/etc/corosync/
       - ./qnetd/logs/:/var/log/corosync/
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "pgrep", "corosync"]
-      interval: 30s
-      timeout: 10s
-      start_period: 30s
-      retries: 3

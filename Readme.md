@@ -45,17 +45,3 @@ ROOT_PASSWORD=your_secure_password
 ```
 
 ---
-
-## **Logging**
-
-The container logs the following events to `/var/log/container.log`:
-
-- When the container starts.
-- When the root password is changed.
-- When SSH access is restricted to specific IPs.
-
----
-
-## **Healthcheck**
-
-The container includes a healthcheck to ensure that `corosync` is running. Docker will monitor the container's health and restart it if necessary.
