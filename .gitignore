@@ -1,0 +1,7 @@
+.env
+!/qnetd/conf/
+/qnetd/conf/*
+!/qnetd/conf/.gitkeep
+!/qnetd/logs/
+/qnetd/logs/*
+!/qnetd/logs/.gitkeep
