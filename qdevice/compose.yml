@@ -12,5 +12,7 @@ services:
       - "22:22"
     volumes:
       - ./qnetd/conf/:/etc/corosync/
-      - ./qnetd/logs/:/var/log/corosync/
+      - ./qnetd/logs/corosync/:/var/log/corosync/
+      - ./qnetd/logs/qdevice/:/var/log/qdevice/
+      - ./ssh/:/root/ssh_host_keys
     restart: unless-stopped

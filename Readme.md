@@ -32,7 +32,30 @@ These configurations are necessary for Proxmox to configure the quorum device (`
 
 ---
 
-### **2. Environment Variables**
+### **2. Installation on Synology NAS**
+
+- Install Container Manager on Synology NAS (It will create a shared folder named docker)
+- Download this repository
+- Copy the qdevice folder to your docker folder on the NAS
+- Update the password in the .env to a very long and complex one.
+- In Container Manager on the NAS
+- - Select Project
+- - Click Create
+- - Name it qdevice
+- - Set Path to the qdevice folder you created earlier
+- - Select Use existing...
+- - Click Next, Next, Done
+- In PVE Shell join the QDevice to the Cluster
+`pvecm qdevice setup <your-nas-ip> -f`
+- say Yes and then type in the SSH password of the QDevice.
+- Validate the status
+`pvecm nodes` and `pvecm status`
+- The QDevice should have a vote.
+- Check the firewall if not, it should be allowed on 5403 UDP
+
+---
+
+### **3. Environment Variables**
 
 The container requires the following environment variable to be set:
 
