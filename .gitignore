@@ -1,18 +1,6 @@
-!/qdevice/qnetd/conf/
-/qdevice/qnetd/conf/*
-!/qdevice/qnetd/conf/.gitkeep
-
-!/qdevice/qnetd/logs/
-/qdevice/qnetd/logs/*
-!/qdevice/qnetd/logs/.gitkeep
-
-!/qdevice/qnetd/logs/corosync/
-/qdevice/qnetd/logs/corosync/*
-!/qdevice/qnetd/logs/corosync/.gitkeep
-
-!/qdevice/qnetd/logs/qdevice/
-/qdevice/qnetd/logs/qdevice/*
-!/qdevice/qnetd/logs/qdevice/.gitkeep
+!/qdevice/nssdb/
+/qdevice/nssdb/*
+!/qdevice/nssdb/.gitkeep
 
 !/qdevice/ssh/
 /qdevice/ssh/*

@@ -26,6 +26,12 @@ else
   cp "${SSHD_ETC}"/ssh_host_* "${KEYDIR}/"
 fi
 
+# check if /etc/corosync/qnetd/nssdb/cert9.db exists if not run certutil
+if [ ! -f /etc/corosync/qnetd/nssdb/cert9.db ]; then
+  echo "Certificate database not found, generating new certificate database."
+  /usr/bin/corosync-qnetd-certutil -i
+fi
+
 # Enforce permissions
 chmod 600 "${KEYDIR}/ssh_host_"*key
 chmod 644 "${KEYDIR}/ssh_host_"*.pub
@@ -33,4 +39,13 @@ chmod 600 "${SSHD_ETC}/ssh_host_"*key
 chmod 644 "${SSHD_ETC}/ssh_host_"*.pub
 
 # Start the SSH server
-exec /usr/sbin/sshd -D -e
+/usr/sbin/sshd -D -e &
+
+# Start the Corosync Qnet daemon
+/usr/bin/corosync-qnetd -f &
+
+# Wait for any process to exit
+wait -n
+
+# Exit with status of process that exited first
+exit $?

@@ -49,9 +49,11 @@ These configurations are necessary for Proxmox to configure the quorum device (`
 `pvecm qdevice setup <your-nas-ip> -f`
 - say Yes and then type in the SSH password of the QDevice.
 - Validate the status
-`pvecm nodes` and `pvecm status`
-- The QDevice should have a vote.
-- Check the firewall if not, it should be allowed on 5403 UDP
+`pvecm status`
+- The QDevice should have a vote under Votes.
+- You can validate if the corosync-qnetd is working in the docker with
+`corosync-qnetd-tool -s`
+- If you have issues check if your firewall rules allow UDP 5043 between the QDevice and the Cluster.
 
 ---
 
@@ -68,3 +70,18 @@ ROOT_PASSWORD=your_secure_password
 ```
 
 ---
+
+### **4. Credit and further documentation**
+
+- <https://github.com/bcleonard/proxmox-qdevice>
+- <https://github.com/modelrockettier/docker-corosync-qnetd>
+- <https://manpages.debian.org/testing/corosync-qnetd/corosync-qnetd.8.en.html>
+- <https://manpages.debian.org/testing/corosync-qnetd/corosync-qnetd-tool.8.en.html>
+- <https://manpages.debian.org/testing/corosync-qnetd/corosync-qnetd-certutil.8.en.html>
+- <https://pve.proxmox.com/wiki/Cluster_Manager>
+- <https://documentation.suse.com/sle-ha/15-SP6/html/SLE-HA-all/cha-ha-qdevice.html>
+- <https://raymii.org/s/tutorials/Proxmox_VE_7_Corosync_QDevice_in_Docker.html>
+- <https://www.youtube.com/watch?v=TXFYTQKYlno>
+- <https://www.youtube.com/watch?v=jAlzBm40onc>
+- <https://www.youtube.com/watch?v=VqyqsKUawRI>
+- <https://www.youtube.com/watch?v=IhEE_QlI1MU>
